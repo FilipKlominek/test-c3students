@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <h1>Students</h1>
+    <ui:repeat value="#{studentBean.getStudents()}" var="student">
+        <div>
+            <span><b>#{student.name}</b></span>
+            <span>#{student.dateOfBirth}</span>
+            <span>#{student.averageGrade}</span>
+            <span>#{student.id}</span>
+        </div>
+    </ui:repeat>
+    <h3>Average grade: #{studentBean.averageAverageGrade}</h3>
+    <h2>Add Student</h2>
+    <h:form onsubmit="#{studentBean.addStudent()}">
+        name:
+        <h:inputText value="#{studentBean.newName}"/>
+        date of birth:
+        <h:inputText value="#{studentBean.newDateOfBirth}"><f:convertDateTime type="localDate"/></h:inputText>
+        averageGrade:
+        <h:inputText value="#{studentBean.newAverageGrade}"/>
+        <h:commandButton type="submit" value="Add"/>
+    </h:form>
+    <h2>Edit Student</h2>
+    <h:form onsubmit="#{studentBean.editStudent()}">
+        id:
+        <h:inputText value="#{studentBean.id}"/>
+        name:
+        <h:inputText value="#{studentBean.newName}"/>
+        date of birth:
+        <h:inputText value="#{studentBean.newDateOfBirth}"><f:convertDateTime type="localDate"/></h:inputText>
+        averageGrade:
+        <h:inputText value="#{studentBean.newAverageGrade}"/>
+        <h:commandButton type="submit" value="Edit"/>
+    </h:form>
+    <h2>Delete Student</h2>
+    <h:form onsubmit="#{studentBean.deleteStudent()}">
+        id:
+        <h:inputText value="#{studentBean.id}"/>
+        <h:commandButton type="submit" value="Delete"/>
+    </h:form>
+</h:body>
+</html>
